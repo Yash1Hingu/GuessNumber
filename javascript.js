@@ -29,6 +29,8 @@ var highscore = 0;
 var highscorehtml = document.querySelector(".highscore");
 var propinput = document.querySelector(".guess");
 
+// music take in variable
+let win  = new Audio('music/win2.mp3');
 
 // when click on check button then main logic is execute.
 checkbtn.addEventListener("click",()=>{
@@ -45,6 +47,11 @@ checkbtn.addEventListener("click",()=>{
             document.body.style.backgroundColor = "green";
             propinput.style.backgroundColor = "green";
             numbershow.innerHTML = randomNu;
+            
+            // Add Animation On game win and play sound
+            message.style.animationName = "win";
+            numbershow.style.animationName = "win2";
+            win.play();
         }
         else if(guessNu > randomNu)
         {
@@ -67,6 +74,10 @@ checkbtn.addEventListener("click",()=>{
 againbtn.addEventListener("click",()=>{
     randomNu = randomNumber();
     score = 20;
+    
+    // when all reset the animation off
+    message.style.animationName = "none";
+    numbershow.style.animationName = "none";
     scorehtml.innerHTML = score;
     message.innerHTML = "Start Guessing...";
     document.body.style.backgroundColor = "black";
